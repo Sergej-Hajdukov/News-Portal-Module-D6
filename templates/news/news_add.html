@@ -1,0 +1,16 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block tittle %}
+News
+{% endblock tittle %}
+
+{% block content %}
+    <h3>Детали статьи/новости:</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Добавить статью/новость">
+    </form>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block tittle %}
+News
+{% endblock tittle %}
+
+{% block content %}
+<h2>{{ object.title }}</h2>
+<div align="left">
+    <b>{{ object.release_date|date:'d-M-Y'}} {{ object.release_date|time:'H:i' }}</b>
+</div>
+<div align="left">
+    {{ object.post_text }}
+</div>
+
+{% if is_not_subscribe %}
+<button><a href="add_subscribe/?pk={{ post.categories.id }}">Подписаться</a></button>
+{% endif %}
+
+{% if is_subscribe %}
+<button><a href="del_subscribe/?pk={{ post.categories.id }}">Отписаться</a></button>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block tittle %}
+News
+{% endblock tittle %}
+
+{% block content %}
+    <h3>Вы действительно хотите удалить эту новость?:</h3>
+    <table>
+        <tr>
+            <td align="left" valign="top">
+                {{ post.title }}
+            </td>
+            <td align="left" valign="top">
+                {{ post.release_date|date:'d.M.Y' }}
+            </td>
+            <td align="left" valign="top">
+                {{ post.post_text|truncatewords:20 }}
+            </td>
+        </tr>
+    </table>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Подтвердить">
+    </form>
+
+{% endblock content %}
